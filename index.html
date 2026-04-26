@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نوارة بووتيك | فخامة العباءة السعودية</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --nwarh-black: #000000;
+            --nwarh-gold: #C5A059;
+            --nwarh-white: #FFFFFF;
+            --nwarh-light: #fdfdfd;
+            --font-main: 'Almarai', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-main); 
+            background-color: var(--nwarh-white); 
+            color: var(--nwarh-black);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* 1. شريط الإعلان */
+        .promo-bar {
+            background: var(--nwarh-black);
+            color: var(--nwarh-gold);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* 2. الناف بار */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 6%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #000; font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--nwarh-gold); }
+        .logo img { height: 45px; width: auto; }
+
+        .nav-icons { 
+            display: flex; 
+            gap: 25px; 
+            align-items: center; 
+        }
+        
+        .icon-btn { 
+            font-size: 20px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            color: var(--nwarh-black); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-btn:hover { color: var(--nwarh-gold); }
+
+        /* 3. الهيرو سيكشن (Desktop) */
+        .hero {
+            height: 85vh;
+            background: url('images/hero-banner.png') center center / cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 70px;
+        }
+        .hero-btn {
+            background: var(--nwarh-black);
+            color: var(--nwarh-white);
+            padding: 16px 50px;
+            border: none;
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .hero-btn:hover { background: var(--nwarh-gold); color: #000; transform: translateY(-5px); }
+
+        /* 4. المنتجات */
+        .section-header { text-align: center; padding: 80px 0 40px; }
+        .section-header h2 { font-size: 30px; font-weight: 800; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            padding: 0 6% 80px;
+        }
+        .product-card { position: relative; background: #fff; overflow: hidden; display: flex; flex-direction: column; transition: 0.4s; }
+        .product-card:hover { transform: translateY(-8px); }
+
+        .img-container { aspect-ratio: 3/4; overflow: hidden; background: #f7f7f7; position: relative; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .product-card:hover .img-container img { transform: scale(1.08); }
+
+        .quick-add {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            width: 100%;
+            background: var(--nwarh-black);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            transition: 0.4s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .product-card:hover .quick-add { bottom: 0; }
+
+        .product-info { padding: 15px 0 20px; text-align: center; }
+        .product-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+        .price { font-weight: 800; font-size: 17px; color: #111; }
+
+        /* 5. آراء العملاء */
+        .testimonials { background: #fafafa; padding: 80px 6%; }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .testi-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-right: 4px solid var(--nwarh-gold);
+            text-align: right;
+        }
+        .testi-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #999;
+            font-size: 12px;
+        }
+        .user-tag { display: flex; align-items: center; gap: 8px; color: #000; font-weight: 700; }
+        .user-tag i { font-size: 20px; color: #ccc; }
+
+        /* 6. البانر الأوسط */
+        .mid-banner {
+            height: 450px;
+            background: url('images/mid-banner.png') center/cover fixed;
+            margin-bottom: 80px;
+        }
+
+        /* 7. الواتساب */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            display: flex;
+            align-items: center;
+            z-index: 2000;
+        }
+        .whatsapp-icon {
+            width: 60px; height: 60px; background: #000; color: var(--nwarh-gold);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 30px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer { background: #000; color: #fff; padding: 70px 6% 30px; text-align: center; }
+        .footer-logo { font-size: 22px; font-weight: 800; color: var(--nwarh-gold); margin-bottom: 15px; }
+        .payment-methods { display: flex; justify-content: center; gap: 20px; font-size: 26px; margin: 30px 0; opacity: 0.7; }
+        .copy { font-size: 11px; color: #444; border-top: 1px solid #111; padding-top: 20px; }
+
+        [data-reveal] { opacity: 0; transform: translateY(25px); transition: 0.7s ease-out; }
+        .revealed { opacity: 1; transform: translateY(0); }
+
+        /* --- تعديلات الجوال (الحل النهائي للبانر) --- */
+        @media (max-width: 768px) {
+            nav { padding: 12px 4%; }
+            .nav-links { display: none; }
+            
+            /* البانر في الجوال: نجعله مرناً ليعرض الصورة كاملة */
+            .hero { 
+                height: auto; 
+                aspect-ratio: 10 / 14; /* تغيير النسبة لتناسب تصميمك (جرب 10/12 أو 10/14) */
+                background-size: contain; /* تضمن ظهور الصورة كاملة بدون قص */
+                background-position: top center;
+                padding-bottom: 20px;
+            }
+            
+            .hero-btn { 
+                width: 90%; 
+                font-size: 14px; 
+                padding: 14px;
+                margin-top: auto; /* يدفع الزر للأسفل */
+            }
+
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 4% 50px; }
+            .quick-add { position: relative; bottom: 0; margin-top: 10px; font-size: 11px; padding: 10px; }
+            .mid-banner { height: 250px; background-attachment: scroll; }
+            .section-header h2 { font-size: 22px; }
+            .nav-icons { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="promo-bar">توصيل سريع | فخامة تليق بكِ | بوابات دفع آمنة</div>
+
+    <nav>
+        <div class="nav-icons">
+            <div class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="icon-btn"><i class="fa-regular fa-user"></i></div>
+            <div class="icon-btn"><i class="fa-solid fa-cart-shopping"></i></div>
+        </div>
+
+        <div class="logo"><img src="images/logo.jpg" alt="Logo"></div>
+
+        <div class="nav-links">
+            <a href="#">الرئيسية</a>
+            <a href="#">العبايات</a>
+            <a href="#">الجديد</a>
+            <a href="#">تواصل معنا</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <button class="hero-btn">تسوقي المجموعة الآن</button>
+    </header>
+
+    <div class="section-header" data-reveal>
+        <h2>أحدث التصاميم</h2>
+    </div>
+
+    <section class="product-grid">
+        <div class="product-card" data-reveal>
+            <div class="img-container"><img src="images/product-1.jpg"></div>
+            <div class="product-info"><h3>عباية كريب فاخرة</h3><div class="price">450 ر.س</div></div>
+            <button class="quick-add">أضف للسلة</button>
+        </div>
+        <div class="product-card" data-reveal>
+            <div class="img-container"><img src="images/product-2.jpg"></div>
+            <div class="product-info"><h3>عباية حرير ملكي</h3><div class="price">520 ر.س</div></div>
+            <button class="quick-add">أضف للسلة</button>
+        </div>
+        <div class="product-card" data-reveal>
+            <div class="img-container"><img src="images/product-3.jpg"></div>
+            <div class="product-info"><h3>عباية سهرة مطرزة</h3><div class="price">610 ر.س</div></div>
+            <button class="quick-add">أضف للسلة</button>
+        </div>
+        <div class="product-card" data-reveal>
+            <div class="img-container"><img src="images/product-4.jpg"></div>
+            <div class="product-info"><h3>بشت نوارة الخاص</h3><div class="price">399 ر.س</div></div>
+            <button class="quick-add">أضف للسلة</button>
+        </div>
+        <div class="product-card" data-reveal>
+            <div class="img-container"><img src="images/product-5.jpg"></div>
+            <div class="product-info"><h3>عباية كلوش كلاسيك</h3><div class="price">425 ر.س</div></div>
+            <button class="quick-add">أضف للسلة</button>
+        </div>
+        <div class="product-card" data-reveal>
+            <div class="img-container"><img src="images/product-6.jpg"></div>
+            <div class="product-info"><h3>عباية سوداء بفيونكة</h3><div class="price">480 ر.س</div></div>
+            <button class="quick-add">أضف للسلة</button>
+        </div>
+    </section>
+
+    <section class="testimonials" data-reveal>
+        <div class="section-header"><h2>آراء العملاء</h2></div>
+        <div class="testimonials-grid">
+            <div class="testi-card">
+                <div class="testi-top">
+                    <span>26-04-2026</span>
+                    <div class="user-tag">خالد المري <i class="fa-solid fa-circle-user"></i></div>
+                </div>
+                <p>جودتهم ماشاء الله وتستاهل كل ريال، وتوصيلهم سريع جداً.</p>
+            </div>
+            <div class="testi-card">
+                <div class="testi-top">
+                    <span>20-04-2026</span>
+                    <div class="user-tag">سعد الحربي <i class="fa-solid fa-circle-user"></i></div>
+                </div>
+                <p>ماشاء الله متجر جميل ورائع والعبايات خاماتها ممتازة.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="mid-banner" data-reveal></div>
+
+    <div class="whatsapp-float">
+        <div class="whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">NWARH BOUTIQUE</div>
+        <p style="font-weight: 300;">عنوان الفخامة في عالم العبايات</p>
+        <div class="payment-methods">
+            <i class="fa-brands fa-cc-apple-pay"></i>
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+        </div>
+        <div class="copy">
+            جميع الحقوق محفوظة لمتجر نوارة © 2026 | تطوير م/ أحمد
+        </div>
+    </footer>
+
+    <script>
+        const revealCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
+            });
+        };
+        const observer = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
